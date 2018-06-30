@@ -1,7 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './Listings.css';
+import {listingShape} from '../../props/listingProp';
 
 class Listings extends React.Component {
+  static propTypes = {
+    listings: PropTypes.arrayOf(listingShape),
+  };
+
   render () {
     const {listings} = this.props;
     const listingsItemComponents = listings.map(item => {
