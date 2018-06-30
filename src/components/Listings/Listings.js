@@ -8,13 +8,19 @@ import {listingShape} from '../../props/listingProp';
 class Listings extends React.Component {
   static propTypes = {
     listings: PropTypes.arrayOf(listingShape),
+    onListingSelection: PropTypes.func,
   };
 
   render () {
-    const {listings} = this.props;
+    const {listings, onListingSelection} = this.props;
     const listingsItemComponents = listings.map((item, index) => {
       return (
-        <ListingItem key={item.id} listing={item} index={index}/>
+        <ListingItem
+          key={item.id}
+          listing={item}
+          index={index}
+          onSelect={onListingSelection}
+        />
       );
     });
 
