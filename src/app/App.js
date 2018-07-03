@@ -28,7 +28,7 @@ class App extends Component {
 
   render () {
     const {selectedListingId, listings} = this.state;
-    const selectedListingObj = listings.find(listing => listing.id === selectedListingId);
+    const selectedListingObj = listings.find(listing => listing.id === selectedListingId) || { nope: 'nope' };
 
     return (
       <div className='App'>
