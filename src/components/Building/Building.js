@@ -3,6 +3,7 @@ import {optionalListingShape} from '../../props/listingProp';
 import {formatPrice} from '../../helpers';
 
 import './Building.css';
+import BuildingTile from '../BuildingTile/BuildingTile';
 
 class Building extends React.Component {
   static propTypes = {
@@ -33,6 +34,31 @@ class Building extends React.Component {
             <h5>{listing.squareFootage} ft<sup>2</sup></h5>
             <p>{listing.description}</p>
           </div>
+        </div>
+        <div className='row'>
+          <BuildingTile
+            imageSrc='cal.png'
+            altText='calendar'
+            pTagText={`Built: ${listing.yearBuilt}`}
+          />
+
+          <BuildingTile
+            imageSrc='hill.png'
+            altText='calendar'
+            pTagText={`${listing.lotInAcres} acres`}
+          />
+
+          <BuildingTile
+            imageSrc='flame.png'
+            altText='flame'
+            pTagText={listing.heating}
+          />
+
+          <BuildingTile
+            imageSrc='snow.png'
+            altText='snow'
+            pTagText={listing.cooling}
+          />
         </div>
       </div>
     );
