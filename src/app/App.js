@@ -19,6 +19,17 @@ class App extends Component {
     });
   };
 
+  formSubmitEvent = (newListing) => {
+    listingRequests.postRequest(newListing)
+      .then(() => {
+        listingRequests.getRequest()
+          .then(listings => {
+            this.setState({listings});
+          });
+      })
+      .catch(console.error.bind(console));
+  };
+
   componentDidMount () {
     firebaseApp();
     listingRequests.getRequest().then(listings => {
@@ -37,7 +48,11 @@ class App extends Component {
           onListingSelection={this.listingSelectEvent}
         /></div>
         <div className='col-sm-6'><Building listing={selectedListingObj} /></div>
-        <div className='col-sm-12'><ListingForm /></div>
+        <div className='col-sm-12'>
+          <ListingForm
+            onSubmit={this.formSubmitEvent}
+          />
+        </div>
       </div>
     );
   }
