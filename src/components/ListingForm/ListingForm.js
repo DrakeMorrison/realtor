@@ -100,9 +100,30 @@ class ListingForm extends React.Component {
 
   formSubmit = (e) => {
     const {onSubmit} = this.props;
+    const {newListing} = this.state;
     e.preventDefault();
-    onSubmit(this.state.newListing);
-    this.setState({newListing: defaultListing});
+    if (
+      newListing.address &&
+      newListing.city &&
+      newListing.state &&
+      newListing.zip &&
+      newListing.squareFootage &&
+      newListing.price &&
+      newListing.numBeds &&
+      newListing.numBaths &&
+      newListing.description &&
+      newListing.estimatedMonthlyMorgage &&
+      newListing.lotInAcres &&
+      newListing.yearBuilt &&
+      newListing.heating &&
+      newListing.cooling &&
+      newListing.imageUrl
+    ) {
+      onSubmit(this.state.newListing);
+      this.setState({newListing: defaultListing});
+    } else {
+      alert('Please fill out all the fields');
+    }
   }
 
   render () {
